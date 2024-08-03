@@ -1,0 +1,31 @@
+package AssignmentTest;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FitPeoHomepage {
+   public static void main(String[] args) throws AWTException, InterruptedException {
+	WebDriver driver=new ChromeDriver();
+	driver.manage().window().maximize();
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+	driver.get("https://www.fitpeo.com/home");
+	driver.findElement(By.linkText("Revenue Calculator")).click();
+	Thread.sleep(2000);
+	Robot rb=new Robot();
+	rb.keyPress(KeyEvent.VK_PAGE_DOWN);
+	rb.keyRelease(KeyEvent.VK_PAGE_DOWN);
+	Thread.sleep(1000);
+
+	driver.findElement(By.xpath("//input[@type='number']")).sendKeys("200");
+	driver.findElement(By.xpath("(//input[@type='checkbox'])[1]")).click();
+	driver.findElement(By.xpath("(//input[@type='checkbox'])[2]")).click();
+	driver.findElement(By.xpath("(//input[@type='checkbox'])[3]")).click();
+	driver.findElement(By.xpath("(//input[@type='checkbox'])[8]")).click();
+
+    }
+}
